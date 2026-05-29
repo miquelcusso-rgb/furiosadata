@@ -22,7 +22,8 @@ export const metadata: Metadata = {
   authors: [{ name: PUBLISHER, url: SITE_URL }],
   creator: PUBLISHER,
   publisher: PUBLISHER,
-  alternates: { canonical: '/' },
+  // canonical NO en metadata — Next.js 15 stripea el trailing slash del root.
+  // Se inyecta a mano en <head> debajo para preservar https://furiosadata.com/
   openGraph: {
     type: 'website',
     url: SITE_URL,
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <head>
+        <link rel="canonical" href="https://furiosadata.com/" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
