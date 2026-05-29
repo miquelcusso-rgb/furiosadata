@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 import { SITES, SITE_URL } from '../../lib/sites';
 
 export const metadata: Metadata = {
-  title: 'Tools — 8 free specialized web apps by Furiosa Studio',
+  title: 'Tools — free specialized web apps by Furiosa Studio',
   description:
-    'Browse all 8 tools in the Furiosa Studio network: timezones, full moons, eclipses, football scorers, epidemics, mortality data and more.',
+    'Browse all tools in the Furiosa Studio network: timezones, full moons, eclipses, football scorers, epidemics, mortality data, post-production calculators and more.',
   alternates: { canonical: '/tools' },
 };
 
@@ -28,10 +28,10 @@ export default function ToolsIndex() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }}
       />
-      <h1 className="text-4xl font-bold tracking-tight">The 8 tools</h1>
+      <h1 className="text-4xl font-bold tracking-tight">The tools</h1>
       <p className="mt-4 text-neutral-600 dark:text-neutral-400 max-w-2xl">
-        Every tool is independently designed for one job, free to use, and built by{' '}
-        <strong>Furiosa Studio</strong>.
+        {SITES.length} tools and counting. Every one is independently designed for one job, free
+        to use, and built by <strong>Furiosa Studio</strong>.
       </p>
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
         {SITES.map((s) => (

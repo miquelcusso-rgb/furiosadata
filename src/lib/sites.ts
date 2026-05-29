@@ -4,7 +4,7 @@ export type Site = {
   url: string;
   tagline: string;
   description: string;
-  category: 'Astronomy' | 'Sports' | 'Productivity' | 'Research' | 'Entertainment';
+  category: 'Astronomy' | 'Sports' | 'Productivity' | 'Research' | 'Entertainment' | 'Post & VFX';
   lang: string;
 };
 
@@ -77,6 +77,16 @@ export const SITES: Site[] = [
     description:
       'Curated mortality statistics, life expectancy and cause-of-death data presented for general audiences.',
     category: 'Research',
+    lang: 'EN',
+  },
+  {
+    slug: 'postmicrotools',
+    name: 'PostMicroTools',
+    url: 'https://postmicrotools.com',
+    tagline: 'Calculators and utilities for post-production & VFX',
+    description:
+      'A free in-browser hub of 17+ calculators and utilities for editors, colorists and VFX artists — bitrate, storage, timecode, aspect ratio, LUT, EXR and more. All client-side, no signup, nothing uploaded.',
+    category: 'Post & VFX',
     lang: 'EN',
   },
   {

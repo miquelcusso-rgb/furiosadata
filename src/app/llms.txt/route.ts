@@ -1,7 +1,7 @@
 export const dynamic = 'force-static';
 
 const content = `# furiosadata.com
-> The Data Tools Network by Furiosa Studio — 8 free specialized web tools plus open datasets.
+> The Data Tools Network by Furiosa Studio — free specialized web tools plus open datasets.
 
 ## Tools
 - Moon phases and full moon dates (ES): https://lunallena.co
@@ -11,6 +11,7 @@ const content = `# furiosadata.com
 - Historical plague and epidemic atlas: https://plagueatlas.com
 - Mortality and death statistics: https://deathvault.app
 - Top scorers in European football: https://top-scorers.com
+- Post-production and VFX calculators (bitrate, storage, timecode, LUT, EXR, aspect ratio): https://postmicrotools.com
 - Fart Rank — viral entertainment app: https://fartrank.app
 
 ## Open data

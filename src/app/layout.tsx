@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: '%s · Furiosa Data',
   },
   description:
-    'Open datasets and free specialized web tools from Furiosa Studio: moon phases, eclipses, time zones, football scorers, historical epidemics and more.',
+    'Open datasets and free specialized web tools from Furiosa Studio: moon phases, eclipses, time zones, football scorers, historical epidemics, post-production calculators and more.',
   applicationName: 'Furiosa Data',
   authors: [{ name: PUBLISHER, url: SITE_URL }],
   creator: PUBLISHER,
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     siteName: 'Furiosa Data',
     title: 'Furiosa Data — The Data Tools Network',
     description:
-      'Free open datasets and 8 specialized web tools by Furiosa Studio.',
+      'Free open datasets and a growing network of specialized web tools by Furiosa Studio.',
   },
   twitter: {
     card: 'summary_large_image',
     site: '@furiosadata',
     creator: '@furiosadata',
     title: 'Furiosa Data — The Data Tools Network',
-    description: 'Free open datasets and 8 specialized web tools by Furiosa Studio.',
+    description: 'Free open datasets and a growing network of specialized web tools by Furiosa Studio.',
   },
   robots: { index: true, follow: true },
 };
@@ -58,6 +58,7 @@ const organizationLd = {
     'https://nextfullmoon.co',
     'https://plagueatlas.com',
     'https://deathvault.app',
+    'https://postmicrotools.com',
     'https://fartrank.app',
   ],
 };

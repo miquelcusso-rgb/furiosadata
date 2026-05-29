@@ -26,15 +26,16 @@ export default function Home() {
           <span className="text-orange-500">Furiosa Studio</span>.
         </h1>
         <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
-          Eight specialized tools across astronomy, sports, productivity and research — plus
-          downloadable datasets you can use anywhere. No login, no ads in your face, no fluff.
+          A growing network of specialized tools across astronomy, sports, productivity,
+          research, post-production and VFX — plus downloadable datasets you can use anywhere.
+          No login, no ads in your face, no fluff.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href="/tools"
             className="inline-flex items-center gap-2 px-5 py-3 bg-orange-500 text-white rounded-md font-medium hover:bg-orange-600"
           >
-            Explore the 8 tools <ArrowRight size={16} />
+            Explore the {SITES.length} tools <ArrowRight size={16} />
           </Link>
           <Link
             href="/data/moon-phases-2025-2030"
@@ -61,7 +62,7 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 py-12 border-t border-neutral-200 dark:border-neutral-800">
         <div className="flex items-center gap-2 mb-6">
           <Wrench size={18} className="text-orange-500" />
-          <h2 className="text-2xl font-bold">The 8 tools</h2>
+          <h2 className="text-2xl font-bold">The tools</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {SITES.map((s) => (
