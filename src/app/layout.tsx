@@ -34,6 +34,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@furiosadata',
+    creator: '@furiosadata',
     title: 'Furiosa Data — The Data Tools Network',
     description: 'Free open datasets and 8 specialized web tools by Furiosa Studio.',
   },
@@ -48,6 +50,7 @@ const organizationLd = {
   description:
     'Furiosa Studio builds free specialized web tools and open datasets across astronomy, sports, productivity and research.',
   sameAs: [
+    'https://x.com/furiosadata',
     'https://top-scorers.com',
     'https://timezonematcher.com',
     'https://next-eclipse.com',
@@ -117,10 +120,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <footer className="border-t border-neutral-200 dark:border-neutral-800 mt-16">
           <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-neutral-600 dark:text-neutral-400 flex flex-col md:flex-row justify-between gap-4">
             <div>© {new Date().getFullYear()} {PUBLISHER}. Open data, free tools.</div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 items-center">
+              <a
+                href="https://x.com/furiosadata"
+                target="_blank"
+                rel="me noopener"
+                className="hover:text-orange-500"
+                aria-label="Follow @furiosadata on X"
+              >
+                @furiosadata
+              </a>
               <Link href="/llms.txt">llms.txt</Link>
               <Link href="/sitemap.xml">sitemap</Link>
-              <a href="https://furiosadata.com" className="hover:text-orange-500">furiosadata.com</a>
             </div>
           </div>
         </footer>

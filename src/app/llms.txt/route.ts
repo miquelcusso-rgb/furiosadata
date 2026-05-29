@@ -32,6 +32,7 @@ const content = `# furiosadata.com
 
 ## About
 Publisher: Furiosa Studio. License for open data: CC BY 4.0. All tools are free, no login required.
+Follow launches and updates on X: https://x.com/furiosadata
 `;
 
 export function GET() {
