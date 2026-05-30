@@ -38,6 +38,14 @@ export const metadata: Metadata = {
     creator: '@furiosadata',
     title: 'Furiosa Data — The Data Tools Network',
     description: 'Free open datasets and a growing network of specialized web tools by Furiosa Studio.',
+    images: [
+      {
+        url: 'https://furiosadata.com/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Furiosa Studio — The Data Tools Network',
+      },
+    ],
   },
   robots: { index: true, follow: true },
 };
