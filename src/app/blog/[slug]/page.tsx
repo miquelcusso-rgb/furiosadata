@@ -30,6 +30,15 @@ export async function generateMetadata({
       publishedTime: post.date,
       authors: [PUBLISHER],
       tags: post.tags,
+      images: [
+        {
+          url: `${SITE_URL}/og-default.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Furiosa Studio — The Data Tools Network',
+          type: 'image/png',
+        },
+      ],
     },
   };
 }
