@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { BLOG_POSTS, getPost, renderBody } from '../../../lib/blog';
-import { SITE_URL, PUBLISHER, SITES } from '../../../lib/sites';
+import { SITE_URL, PUBLISHER, SITES, DEFAULT_OG_IMAGES } from '../../../lib/sites';
 
 export const dynamic = 'force-static';
 
@@ -30,15 +30,7 @@ export async function generateMetadata({
       publishedTime: post.date,
       authors: [PUBLISHER],
       tags: post.tags,
-      images: [
-        {
-          url: `${SITE_URL}/og-default.png`,
-          width: 1200,
-          height: 630,
-          alt: 'Furiosa Studio — The Data Tools Network',
-          type: 'image/png',
-        },
-      ],
+      images: DEFAULT_OG_IMAGES,
     },
   };
 }

@@ -103,3 +103,25 @@ export const SITES: Site[] = [
 
 export const SITE_URL = 'https://furiosadata.com';
 export const PUBLISHER = 'Furiosa Studio';
+
+/**
+ * Default Open Graph / Twitter card image for furiosadata.com.
+ *
+ * Used by the root layout AND by every route that overrides `openGraph`
+ * in its own `generateMetadata()` — Next.js Metadata API does NOT
+ * deep-merge `openGraph` between layout and page, so any route that
+ * redeclares `openGraph` must also re-pass `images` or the inherited
+ * image is dropped. Spread this constant to avoid that footgun:
+ *
+ *   openGraph: { ..., images: DEFAULT_OG_IMAGES }
+ *   twitter:   { ..., images: DEFAULT_OG_IMAGES }
+ */
+export const DEFAULT_OG_IMAGES = [
+  {
+    url: `${SITE_URL}/og-default.png`,
+    width: 1200,
+    height: 630,
+    alt: 'Furiosa Studio — The Data Tools Network',
+    type: 'image/png',
+  },
+];

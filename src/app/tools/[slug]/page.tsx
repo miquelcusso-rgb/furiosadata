@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ExternalLink } from 'lucide-react';
-import { SITES, SITE_URL, PUBLISHER } from '../../../lib/sites';
+import { SITES, SITE_URL, PUBLISHER, DEFAULT_OG_IMAGES } from '../../../lib/sites';
 
 export const dynamic = 'force-static';
 
@@ -26,15 +26,7 @@ export async function generateMetadata({
       title: `${site.name} — ${site.tagline}`,
       description: site.description,
       url: `${SITE_URL}/tools/${site.slug}`,
-      images: [
-        {
-          url: `${SITE_URL}/og-default.png`,
-          width: 1200,
-          height: 630,
-          alt: 'Furiosa Studio — The Data Tools Network',
-          type: 'image/png',
-        },
-      ],
+      images: DEFAULT_OG_IMAGES,
     },
   };
 }

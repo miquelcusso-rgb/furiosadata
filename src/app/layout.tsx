@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { Geist, Geist_Mono } from 'next/font/google';
 import Link from 'next/link';
 import './globals.css';
-import { SITE_URL, PUBLISHER } from '../lib/sites';
+import { SITE_URL, PUBLISHER, DEFAULT_OG_IMAGES } from '../lib/sites';
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
@@ -31,15 +31,7 @@ export const metadata: Metadata = {
     title: 'Furiosa Data — The Data Tools Network',
     description:
       'Free open datasets and a growing network of specialized web tools by Furiosa Studio.',
-    images: [
-      {
-        url: 'https://furiosadata.com/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'Furiosa Studio — The Data Tools Network',
-        type: 'image/png',
-      },
-    ],
+    images: DEFAULT_OG_IMAGES,
   },
   twitter: {
     card: 'summary_large_image',
@@ -47,14 +39,7 @@ export const metadata: Metadata = {
     creator: '@furiosadata',
     title: 'Furiosa Data — The Data Tools Network',
     description: 'Free open datasets and a growing network of specialized web tools by Furiosa Studio.',
-    images: [
-      {
-        url: 'https://furiosadata.com/og-default.png',
-        width: 1200,
-        height: 630,
-        alt: 'Furiosa Studio — The Data Tools Network',
-      },
-    ],
+    images: DEFAULT_OG_IMAGES,
   },
   robots: { index: true, follow: true },
 };
