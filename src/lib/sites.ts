@@ -4,7 +4,7 @@ export type Site = {
   url: string;
   tagline: string;
   description: string;
-  category: 'Astronomy' | 'Sports' | 'Productivity' | 'Research' | 'Entertainment' | 'Post & VFX';
+  category: 'Astronomy' | 'Sports' | 'Productivity' | 'Research' | 'Entertainment' | 'Post & VFX' | 'AI';
   lang: string;
 };
 
@@ -98,6 +98,16 @@ export const SITES: Site[] = [
       'Rank, score and share the universal human comedy. Built as an experiment in viral product design.',
     category: 'Entertainment',
     lang: 'EN',
+  },
+  {
+    slug: 'modelozero',
+    name: 'Modelo Zero',
+    url: 'https://modelozero.com',
+    tagline: 'El pulso de la IA, en español',
+    description:
+      'Canal de divulgación sobre inteligencia artificial en español: cada lanzamiento de los grandes laboratorios (OpenAI, Anthropic, Google DeepMind, Meta, DeepSeek, Mistral, xAI…) explicado en 5 claves, en vídeos cortos.',
+    category: 'AI',
+    lang: 'ES',
   },
 ];
 

@@ -14,6 +14,9 @@ const content = `# furiosadata.com
 - Post-production and VFX calculators (bitrate, storage, timecode, LUT, EXR, aspect ratio): https://postmicrotools.com
 - Fart Rank — viral entertainment app: https://fartrank.app
 
+## Media
+- Modelo Zero — AI news channel in Spanish, every major AI lab launch explained in 5 key points: https://modelozero.com (YouTube: https://youtube.com/@Modelo_Zero)
+
 ## Open data
 - Full moons 2025–2030 (CSV + JSON): https://furiosadata.com/data/moon-phases-2025-2030
 - Eclipses 2025–2035 (NASA-sourced): https://furiosadata.com/data/eclipses-2025-2035

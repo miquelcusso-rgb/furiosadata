@@ -62,6 +62,8 @@ const organizationLd = {
     'https://deathvault.app',
     'https://postmicrotools.com',
     'https://fartrank.app',
+    'https://modelozero.com',
+    'https://youtube.com/@Modelo_Zero',
   ],
 };
 
