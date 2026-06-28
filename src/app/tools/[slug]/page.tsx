@@ -78,6 +78,12 @@ export default async function ToolPage({
       <p className="mt-3 text-lg text-neutral-600 dark:text-neutral-400">{site.tagline}</p>
       <p className="mt-6 text-base">{site.description}</p>
 
+      <div className="mt-5 space-y-3 text-base text-neutral-700 dark:text-neutral-300">
+        {site.details.map((d, i) => (
+          <p key={i}>{d}</p>
+        ))}
+      </div>
+
       <a
         href={site.url}
         target="_blank"
