@@ -65,6 +65,10 @@ const organizationLd = {
     'https://modelozero.com',
     'https://youtube.com/@Modelo_Zero',
   ],
+  knowsAbout: [
+    'Eclipses', 'Moon phases', 'Astronomy', 'Football statistics', 'World Cup top scorers',
+    'Time zones', 'Video post-production', 'VFX tools', 'Historical mortality data', 'Pandemics',
+  ],
 };
 
 const websiteLd = {
