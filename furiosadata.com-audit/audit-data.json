@@ -1,0 +1,50 @@
+{
+  "summary": {
+    "health_score": 88,
+    "business_type": "Hub / knowledge-graph node (hub-and-spoke), Next.js 16 on Vercel",
+    "top_findings": [
+      "No security/hardening HTTP headers (HSTS present, rest missing)",
+      "/tools/<slug> hub catalog pages are thin",
+      "Reciprocal satellite->hub graph wiring unverified",
+      "Organization schema missing logo/knowsAbout",
+      "Single shared OG image across tool/data pages"
+    ],
+    "quick_wins": [
+      "Add headers() to next.config.ts",
+      "Add logo + knowsAbout to Organization JSON-LD",
+      "Add numberOfItems + self-referential items to /tools ItemList",
+      "Expand each /tools/<slug> with unique citable context",
+      "Add WebSite SearchAction + satellites ItemList to home JSON-LD"
+    ]
+  },
+  "categories": [
+    {"name": "Technical SEO", "score": 90, "what_works": ["HTTPS/HTTP2", "2y HSTS", "Vercel edge cache HIT", "clean robots w/ AI-bot allows", "valid complete sitemap", "correct canonicals incl. root trailing-slash fix"], "findings": [
+      {"title": "No security headers", "severity": "High", "description": "Live response lacks CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy. No headers() in next.config.ts.", "recommendation": "Add headers() block, CSP report-only first."}
+    ]},
+    {"name": "Content Quality", "score": 82, "what_works": ["unique titles/descriptions", "topical internal anchors", "datasets cite real sources (NASA, RSSSF)", "5 blog posts cross-linking spokes"], "findings": [
+      {"title": "Thin /tools/<slug> pages", "severity": "High", "description": "Each tool hub page is tagline + one description sentence + CTA; too light to rank/be cited as the canonical satellite entry.", "recommendation": "Add 2-3 unique citable sentences per tool + optional FAQ."}
+    ]},
+    {"name": "On-Page SEO", "score": 92, "what_works": ["title template", "single H1 per page", "OG/Twitter complete w/ @furiosadata", "DEFAULT_OG_IMAGES footgun handled", "og 1200x630"], "findings": []},
+    {"name": "Schema / Structured Data", "score": 90, "what_works": ["Organization.sameAs complete (12 entities: X + 9 tools + Modelo Zero + YouTube)", "WebSite schema", "ItemList on /tools", "WebSite+BreadcrumbList per tool", "Dataset schema w/ CC BY 4.0 + DataDownload", "Article schema on blog"], "findings": [
+      {"title": "Reciprocal wiring unverified", "severity": "High", "description": "Hub->satellite sameAs present; satellite->hub back-references must be confirmed for full entity legibility.", "recommendation": "Audit each satellite JSON-LD; add furiosadata.com to their sameAs/isPartOf."},
+      {"title": "Org schema missing logo/knowsAbout", "severity": "Medium", "description": "No logo ImageObject, no knowsAbout topical domains.", "recommendation": "Add logo + knowsAbout + foundingDate."},
+      {"title": "ItemList not self-referential", "severity": "Medium", "description": "/tools ItemList items reference external satellite URLs, not the /tools/<slug> hub entries; no numberOfItems.", "recommendation": "Point items at /tools/<slug> and add numberOfItems."}
+    ]},
+    {"name": "Performance (CWV)", "score": 90, "what_works": ["force-static pages", "Vercel edge cache HIT", "near-imageless, inline SVG icons", "Geist fonts via next/font"], "findings": [
+      {"title": "Field data not pulled", "severity": "Info", "description": "Lab/infra-inferred; CrUX/GSC field data not fetched in this pass.", "recommendation": "Pull CrUX via seo-google for field confirmation."}
+    ]},
+    {"name": "AI Search Readiness (GEO)", "score": 95, "what_works": ["rich llms.txt (tools, media, datasets, APIs, articles, license)", "AI bots allowed in robots", "public JSON APIs + CSV/JSON datasets = high citability", "attributable facts"], "findings": []},
+    {"name": "Images", "score": 80, "what_works": ["correct OG dimensions", "no missing alt (imageless)"], "findings": [
+      {"title": "Single shared OG image", "severity": "Medium", "description": "All tool/data pages share og-default.png.", "recommendation": "Per-entity OG via next/og."}
+    ]}
+  ],
+  "action_plan": {
+    "phases": [
+      {"name": "Phase 1: Quick wins", "timeframe": "Week 1", "items": ["Security headers", "Org logo+knowsAbout", "ItemList numberOfItems + self-ref", "Home SearchAction + satellites ItemList"]},
+      {"name": "Phase 2: High-impact", "timeframe": "Weeks 2-3", "items": ["Thicken /tools/<slug> pages + FAQ", "Verify reciprocal satellite->hub wiring"]},
+      {"name": "Phase 3: Authority", "timeframe": "Month 2", "items": ["Per-entity OG images", "Tool @type mapping", "Sustain blog cadence"]},
+      {"name": "Phase 4: Monitoring", "timeframe": "Ongoing", "items": ["GSC indexation watch", "AI-citation tracking of datasets", "Re-audit after Phase 1-2"]}
+    ]
+  },
+  "artifacts": {"findings_dir": "findings/", "screenshots_dir": "screenshots/"}
+}

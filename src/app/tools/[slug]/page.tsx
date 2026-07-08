@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Globe } from 'lucide-react';
 import { SITES, SITE_URL, PUBLISHER, DEFAULT_OG_IMAGES } from '../../../lib/sites';
+import { ToolCard } from '../../../components/ToolCard';
 
 export const dynamic = 'force-static';
 
@@ -61,55 +62,87 @@ export default async function ToolPage({
 
   const related = SITES.filter((s) => s.category === site.category && s.slug !== site.slug);
 
+  const heroStyle = {
+    background: `radial-gradient(ellipse 60% 80% at 50% 0%, ${site.color}22, transparent 70%)`,
+  };
+
   return (
-    <div className="mx-auto max-w-3xl px-6 py-12">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
-      />
-      <nav className="text-sm text-neutral-500 mb-6">
-        <Link href="/tools" className="hover:text-orange-500">Tools</Link>
-        <span className="mx-2">/</span>
-        <span>{site.name}</span>
-      </nav>
-      <p className="text-sm font-mono text-orange-500">{site.category}</p>
-      <h1 className="text-4xl font-bold tracking-tight mt-2">{site.name}</h1>
-      <p className="mt-3 text-lg text-neutral-600 dark:text-neutral-400">{site.tagline}</p>
-      <p className="mt-6 text-base">{site.description}</p>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
-      <div className="mt-5 space-y-3 text-base text-neutral-700 dark:text-neutral-300">
-        {site.details.map((d, i) => (
-          <p key={i}>{d}</p>
-        ))}
-      </div>
+      <section style={heroStyle}>
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 pt-8 sm:pt-12 pb-10">
+          <nav className="text-sm text-neutral-500 mb-6">
+            <Link href="/tools" className="hover:text-orange-500">Tools</Link>
+            <span className="mx-2">/</span>
+            <span>{site.name}</span>
+          </nav>
 
-      <a
-        href={site.url}
-        target="_blank"
-        rel="noopener"
-        className="mt-8 inline-flex items-center gap-2 px-5 py-3 bg-orange-500 text-white rounded-md font-medium hover:bg-orange-600"
-      >
-        Visit {site.url.replace('https://', '')} <ExternalLink size={16} />
-      </a>
-
-      {related.length > 0 && (
-        <section className="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800">
-          <h2 className="text-xl font-semibold">Related {site.category.toLowerCase()} tools</h2>
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {related.map((r) => (
-              <Link
-                key={r.slug}
-                href={`/tools/${r.slug}`}
-                className="p-4 rounded-md border border-neutral-200 dark:border-neutral-800 hover:border-orange-500"
-              >
-                <p className="font-semibold">{r.name}</p>
-                <p className="text-sm text-neutral-500">{r.tagline}</p>
-              </Link>
-            ))}
+          <div className="flex items-start gap-4 sm:gap-5">
+            <div
+              className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden ring-1 ring-black/10 dark:ring-white/10 bg-white flex items-center justify-center"
+              style={{ boxShadow: `0 12px 40px -12px ${site.color}66` }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`/logos/${site.slug}.png`} alt={`${site.name} logo`} width={80} height={80} className="w-full h-full object-contain" />
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: site.color }}>{site.category}</p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-1">{site.name}</h1>
+              <p className="mt-2 text-base sm:text-lg text-neutral-600 dark:text-neutral-400">{site.tagline}</p>
+            </div>
           </div>
-        </section>
-      )}
-    </div>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href={site.url}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 px-5 py-3 text-white rounded-md font-medium"
+              style={{ backgroundColor: site.color, color: '#0a0a0a' }}
+            >
+              Open {site.url.replace('https://', '')} <ExternalLink size={16} />
+            </a>
+            <a
+              href={site.url}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 px-4 py-3 text-sm font-mono text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200"
+            >
+              <Globe size={14} /> {site.lang}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 pb-16">
+        <p className="text-base sm:text-lg">{site.description}</p>
+
+        <div className="mt-6 space-y-4 text-base text-neutral-700 dark:text-neutral-300 leading-relaxed">
+          {site.details.map((d, i) => (
+            <p key={i}>{d}</p>
+          ))}
+        </div>
+
+        <a
+          href={site.url}
+          target="_blank"
+          rel="noopener"
+          className="mt-10 inline-flex items-center gap-2 text-sm font-mono px-4 py-2 rounded-md border border-neutral-300 dark:border-neutral-700 hover:border-orange-500"
+        >
+          Visit {site.url.replace('https://', '')} <ExternalLink size={14} />
+        </a>
+
+        {related.length > 0 && (
+          <section className="mt-14 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+            <h2 className="text-xl font-semibold mb-4">Related {site.category.toLowerCase()} tools</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {related.map((r) => <ToolCard key={r.slug} site={r} variant="compact" />)}
+            </div>
+          </section>
+        )}
+      </div>
+    </>
   );
 }

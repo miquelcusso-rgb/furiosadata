@@ -113,18 +113,37 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             />
           </noscript>
         )}
-        <header className="border-b border-neutral-200 dark:border-neutral-800">
-          <div className="mx-auto max-w-6xl px-6 h-14 flex items-center justify-between">
-            <Link href="/" className="font-semibold tracking-tight">
+        <header className="sticky top-0 z-30 backdrop-blur-md bg-white/80 dark:bg-neutral-950/80 border-b border-neutral-200 dark:border-neutral-800">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 h-14 flex items-center justify-between">
+            <Link href="/" className="font-semibold tracking-tight text-lg" aria-label="Furiosa Data home">
               Furiosa<span className="text-orange-500">Data</span>
             </Link>
-            <nav className="flex items-center gap-6 text-sm">
+            <nav className="hidden md:flex items-center gap-6 text-sm" aria-label="Primary">
               <Link href="/tools" className="hover:text-orange-500">Tools</Link>
-              <Link href="/data/moon-phases-2025-2030" className="hover:text-orange-500">Data</Link>
               <Link href="/blog" className="hover:text-orange-500">Blog</Link>
+              <Link href="/data/moon-phases-2025-2030" className="hover:text-orange-500">Data</Link>
+              <Link href="/contact" className="hover:text-orange-500">Contact</Link>
             </nav>
+            <a
+              href="#menu"
+              className="md:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-900"
+              aria-label="Open menu"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </a>
           </div>
         </header>
+        <div id="menu" className="mobile-nav">
+          <a href="#" className="absolute top-3 right-4 w-10 h-10 inline-flex items-center justify-center rounded hover:bg-neutral-100 dark:hover:bg-neutral-900" aria-label="Close menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M6 6l12 12M6 18L18 6"/></svg>
+          </a>
+          <nav className="flex flex-col gap-6 text-2xl font-semibold">
+            <a href="/tools">Tools</a>
+            <a href="/blog">Blog</a>
+            <a href="/data/moon-phases-2025-2030">Data</a>
+            <a href="/contact">Contact</a>
+          </nav>
+        </div>
         <main className="flex-1">{children}</main>
         <footer className="border-t border-neutral-200 dark:border-neutral-800 mt-16">
           <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-neutral-600 dark:text-neutral-400 flex flex-col md:flex-row justify-between gap-4">
@@ -148,6 +167,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 </svg>
                 <span>@furiosadata</span>
               </a>
+              <Link href="/contact" className="hover:text-orange-500">Contact</Link>
               <Link href="/llms.txt">llms.txt</Link>
               <Link href="/sitemap.xml">sitemap</Link>
             </div>

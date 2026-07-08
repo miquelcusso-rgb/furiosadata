@@ -13,6 +13,8 @@ export type Site = {
   details: string[];
   category: 'Astronomy' | 'Sports' | 'Productivity' | 'Research' | 'Entertainment' | 'Post & VFX' | 'AI';
   lang: string;
+  /** Brand accent (hex). Used for the card border glow + icon halo. */
+  color: string;
 };
 
 export const SITES: Site[] = [
@@ -30,6 +32,7 @@ export const SITES: Site[] = [
     ],
     category: 'Sports',
     lang: 'EN/ES',
+    color: '#f0c040',
   },
   {
     slug: 'timezonematcher',
@@ -45,6 +48,7 @@ export const SITES: Site[] = [
     ],
     category: 'Productivity',
     lang: 'EN',
+    color: '#22d3ee',
   },
   {
     slug: 'next-eclipse',
@@ -60,6 +64,7 @@ export const SITES: Site[] = [
     ],
     category: 'Astronomy',
     lang: 'EN',
+    color: '#fb923c',
   },
   {
     slug: 'lunallena',
@@ -75,6 +80,7 @@ export const SITES: Site[] = [
     ],
     category: 'Astronomy',
     lang: 'ES/EN',
+    color: '#818cf8',
   },
   {
     slug: 'nextfullmoon',
@@ -90,6 +96,7 @@ export const SITES: Site[] = [
     ],
     category: 'Astronomy',
     lang: 'EN',
+    color: '#a5b4fc',
   },
   {
     slug: 'plagueatlas',
@@ -105,6 +112,7 @@ export const SITES: Site[] = [
     ],
     category: 'Research',
     lang: 'EN',
+    color: '#f43f5e',
   },
   {
     slug: 'deathvault',
@@ -120,6 +128,7 @@ export const SITES: Site[] = [
     ],
     category: 'Research',
     lang: 'EN',
+    color: '#e11d48',
   },
   {
     slug: 'postmicrotools',
@@ -135,6 +144,7 @@ export const SITES: Site[] = [
     ],
     category: 'Post & VFX',
     lang: 'EN',
+    color: '#6366f1',
   },
   {
     slug: 'fartrank',
@@ -150,6 +160,7 @@ export const SITES: Site[] = [
     ],
     category: 'Entertainment',
     lang: 'EN',
+    color: '#39FF14',
   },
   {
     slug: 'modelozero',
@@ -165,7 +176,18 @@ export const SITES: Site[] = [
     ],
     category: 'AI',
     lang: 'ES',
+    color: '#10b981',
   },
+];
+
+export const CATEGORY_ORDER: Site['category'][] = [
+  'Astronomy',
+  'Sports',
+  'Productivity',
+  'Research',
+  'Post & VFX',
+  'AI',
+  'Entertainment',
 ];
 
 export const SITE_URL = 'https://furiosadata.com';

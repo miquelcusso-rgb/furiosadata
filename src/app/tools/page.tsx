@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { SITES, SITE_URL } from '../../lib/sites';
+import { CATEGORY_ORDER, SITES, SITE_URL } from '../../lib/sites';
+import { ToolCard } from '../../components/ToolCard';
 
 export const metadata: Metadata = {
   title: 'Tools — free specialized web apps by Furiosa Studio',
@@ -22,32 +23,55 @@ const itemListLd = {
 };
 
 export default function ToolsIndex() {
+  const grouped = CATEGORY_ORDER
+    .map((category) => ({ category, sites: SITES.filter((s) => s.category === category) }))
+    .filter((g) => g.sites.length > 0);
+  const categories = grouped.map((g) => g.category);
+
   return (
-    <div className="mx-auto max-w-6xl px-6 py-12">
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }}
       />
-      <h1 className="text-4xl font-bold tracking-tight">The tools</h1>
-      <p className="mt-4 text-neutral-600 dark:text-neutral-400 max-w-2xl">
-        {SITES.length} tools and counting. Every one is independently designed for one job, free
-        to use, and built by <strong>Furiosa Studio</strong>.
+      <p className="text-xs font-mono uppercase tracking-wider text-orange-500 mb-3">
+        The network · {SITES.length} tools
       </p>
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-        {SITES.map((s) => (
-          <Link
-            key={s.slug}
-            href={`/tools/${s.slug}`}
-            className="p-6 rounded-md border border-neutral-200 dark:border-neutral-800 hover:border-orange-500 transition block"
+      <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">All tools</h1>
+      <p className="mt-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
+        Every tool is independently designed for one job, free to use, and built by{' '}
+        <strong>Furiosa Studio</strong>.
+      </p>
+
+      {/* Category jump-links: pure-CSS in-page anchors, no JS */}
+      <div className="mt-6 flex flex-wrap gap-2 overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0 pb-1">
+        {categories.map((c) => (
+          <a
+            key={c}
+            href={`#${c.replace(/\s|&/g, '-')}`}
+            className="whitespace-nowrap text-xs font-mono uppercase tracking-wider px-3 py-1.5 rounded-full border border-neutral-300 dark:border-neutral-700 hover:border-orange-500 hover:text-orange-500"
           >
-            <div className="flex items-baseline justify-between">
-              <p className="font-semibold text-lg">{s.name}</p>
-              <span className="text-xs text-neutral-500">{s.category}</span>
-            </div>
-            <p className="text-sm text-neutral-500 mt-1">{s.tagline}</p>
-            <p className="text-sm mt-3">{s.description}</p>
-          </Link>
+            {c}
+          </a>
         ))}
+      </div>
+
+      <div className="mt-10 space-y-14">
+        {grouped.map(({ category, sites }) => (
+          <section key={category} id={category.replace(/\s|&/g, '-')} className="scroll-mt-20">
+            <h2 className="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-4">{category}</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              {sites.map((s) => <ToolCard key={s.slug} site={s} />)}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <div className="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-800 text-center">
+        <p className="text-sm text-neutral-500">
+          Have an idea for the next one?{' '}
+          <Link href="/contact" className="text-orange-500 hover:underline">Get in touch</Link>.
+        </p>
       </div>
     </div>
   );

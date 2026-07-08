@@ -12,8 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   return [
     { url: `${SITE_URL}/`,     lastModified: now, changeFrequency: 'weekly',  priority: 1.0 },
-    { url: `${SITE_URL}/tools`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${SITE_URL}/blog`,  lastModified: now, changeFrequency: 'weekly',  priority: 0.8 },
+    { url: `${SITE_URL}/tools`,   lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${SITE_URL}/blog`,    lastModified: now, changeFrequency: 'weekly',  priority: 0.8 },
+    { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: 'yearly',  priority: 0.5 },
     ...SITES.map((s) => ({
       url: `${SITE_URL}/tools/${s.slug}`,
       lastModified: now,
