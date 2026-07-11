@@ -5,6 +5,7 @@ type Variant = 'default' | 'compact';
 
 export function ToolCard({ site, variant = 'default' }: { site: Site; variant?: Variant }) {
   const cardStyle = { ['--brand' as string]: site.color } as React.CSSProperties;
+  const logoSize = variant === 'compact' ? 'w-12 h-12' : 'w-16 h-16 sm:w-[72px] sm:h-[72px]';
   return (
     <Link
       href={`/tools/${site.slug}`}
@@ -12,27 +13,24 @@ export function ToolCard({ site, variant = 'default' }: { site: Site; variant?: 
       style={cardStyle}
     >
       <span className="tool-card__halo" aria-hidden="true" />
-      <div className={variant === 'compact' ? 'p-4 flex items-center gap-3' : 'p-5'}>
-        <div
-          className={
-            variant === 'compact'
-              ? 'shrink-0 w-10 h-10 rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-white/10 bg-white flex items-center justify-center'
-              : 'w-12 h-12 rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-white/10 bg-white flex items-center justify-center mb-4'
-          }
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`/logos/${site.slug}.png`}
-            alt=""
-            width={48}
-            height={48}
-            loading="lazy"
-            className="w-full h-full object-contain"
-          />
-        </div>
-        <div className={variant === 'compact' ? 'min-w-0' : ''}>
-          <div className="flex items-baseline gap-2">
-            <span className="font-semibold truncate">{site.name}</span>
+      <div className={variant === 'compact' ? 'p-4 flex items-center gap-3' : 'p-5 flex items-center gap-4'}>
+        {/* No background behind the icon — the PNGs carry their own rounded
+            shape, a solid bg bleeds through their transparent corners. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`/logos/${site.slug}.png`}
+          alt=""
+          width={72}
+          height={72}
+          loading="lazy"
+          className={`${logoSize} shrink-0 rounded-2xl object-contain`}
+          style={{ filter: `drop-shadow(0 4px 14px ${site.color}44)` }}
+        />
+        <div className="min-w-0">
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <span className={variant === 'compact' ? 'font-semibold truncate' : 'font-semibold text-lg truncate'}>
+              {site.name}
+            </span>
             <span className="text-[10px] uppercase tracking-wider text-neutral-500 shrink-0">{site.category}</span>
           </div>
           <p className="text-sm text-neutral-500 mt-1 line-clamp-2">{site.tagline}</p>

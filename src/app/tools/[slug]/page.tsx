@@ -80,13 +80,15 @@ export default async function ToolPage({
           </nav>
 
           <div className="flex items-start gap-4 sm:gap-5">
-            <div
-              className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden ring-1 ring-black/10 dark:ring-white/10 bg-white flex items-center justify-center"
-              style={{ boxShadow: `0 12px 40px -12px ${site.color}66` }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`/logos/${site.slug}.png`} alt={`${site.name} logo`} width={80} height={80} className="w-full h-full object-contain" />
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`/logos/${site.slug}.png`}
+              alt={`${site.name} logo`}
+              width={96}
+              height={96}
+              className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-contain"
+              style={{ filter: `drop-shadow(0 12px 32px ${site.color}55)` }}
+            />
             <div className="min-w-0">
               <p className="text-xs font-mono uppercase tracking-wider" style={{ color: site.color }}>{site.category}</p>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-1">{site.name}</h1>
