@@ -5,7 +5,8 @@ import { ToolCard } from '../components/ToolCard';
 import { getNextFullMoon } from '../lib/moons';
 import { getNextEclipse } from '../lib/eclipses';
 
-export const dynamic = 'force-static';
+// ISR daily: hero shows the live next-full-moon / next-eclipse dates.
+export const revalidate = 86400;
 
 const DATASETS = [
   { slug: 'moon-phases-2025-2030',   title: 'Moon phases 2025–2030',    desc: 'Every full moon with traditional names and supermoon flags.' },

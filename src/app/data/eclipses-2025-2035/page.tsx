@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { Download } from 'lucide-react';
-import { ECLIPSES } from '../../../lib/eclipses';
+import { Download, Sparkles } from 'lucide-react';
+import { ECLIPSES, getNextEclipse } from '../../../lib/eclipses';
 import { SITE_URL, PUBLISHER } from '../../../lib/sites';
 
-export const dynamic = 'force-static';
+// ISR daily so the answer-first block stays current.
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: 'Solar and lunar eclipses 2025–2035 — open dataset',
@@ -13,7 +14,11 @@ export const metadata: Metadata = {
   alternates: { canonical: '/data/eclipses-2025-2035' },
 };
 
+const fmtLong = (date: string) =>
+  new Date(`${date}T00:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
 export default function EclipsesDataPage() {
+  const nextEclipse = getNextEclipse();
   const datasetLd = {
     '@context': 'https://schema.org',
     '@type': 'Dataset',
@@ -53,6 +58,22 @@ export default function EclipsesDataPage() {
       ))}
       <p className="text-sm font-mono text-orange-500">Open dataset · Astronomy</p>
       <h1 className="text-4xl font-bold tracking-tight mt-2">Eclipses 2025–2035</h1>
+
+      {/* Answer-first block — extractable by AI Overviews / featured snippets */}
+      <div className="mt-6 p-5 rounded-xl border border-orange-300/40 dark:border-orange-500/30 bg-orange-50/50 dark:bg-orange-950/30">
+        <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-orange-500 mb-1">
+          <Sparkles size={12} /> Quick answer
+        </div>
+        <p className="text-lg">
+          The next eclipse is a <strong>{nextEclipse.type}</strong> eclipse on{' '}
+          <strong>{fmtLong(nextEclipse.date)}</strong> at {nextEclipse.maxTimeUTC} UTC, visible
+          from {nextEclipse.visibility}.{' '}
+          <Link href={`/data/eclipses/${nextEclipse.date}`} className="text-orange-500 underline">
+            Details →
+          </Link>
+        </p>
+      </div>
+
       <p className="mt-4 text-neutral-600 dark:text-neutral-400">
         All {ECLIPSES.length} solar and lunar eclipses between 2025 and 2035, with type, maximum
         eclipse UTC time and visibility region. Source: NASA Goddard Space Flight Center
@@ -87,7 +108,9 @@ export default function EclipsesDataPage() {
           <tbody>
             {ECLIPSES.map((e) => (
               <tr key={e.date} className="border-b border-neutral-100 dark:border-neutral-900 align-top">
-                <td className="py-2 pr-4 font-mono">{e.date}</td>
+                <td className="py-2 pr-4 font-mono">
+                  <Link href={`/data/eclipses/${e.date}`} className="text-orange-500 hover:underline">{e.date}</Link>
+                </td>
                 <td className="py-2 pr-4">{e.type}</td>
                 <td className="py-2 pr-4 font-mono text-neutral-500">{e.maxTimeUTC}</td>
                 <td className="py-2 pr-4">

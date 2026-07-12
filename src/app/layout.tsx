@@ -84,6 +84,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <head>
         <link rel="canonical" href="https://furiosadata.com/" />
+        <link rel="alternate" type="application/rss+xml" title="Furiosa Data — Blog" href="/feed.xml" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
@@ -167,9 +168,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 </svg>
                 <span>@furiosadata</span>
               </a>
+              <Link href="/about" className="hover:text-orange-500">About</Link>
+              <Link href="/developers" className="hover:text-orange-500">API</Link>
               <Link href="/contact" className="hover:text-orange-500">Contact</Link>
+              <Link href="/feed.xml">RSS</Link>
               <Link href="/llms.txt">llms.txt</Link>
-              <Link href="/sitemap.xml">sitemap</Link>
             </div>
           </div>
         </footer>

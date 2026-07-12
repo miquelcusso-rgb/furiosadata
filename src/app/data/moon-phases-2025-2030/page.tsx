@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { Download } from 'lucide-react';
-import { getFullMoons } from '../../../lib/moons';
+import { Download, Moon } from 'lucide-react';
+import { getFullMoons, getNextFullMoon } from '../../../lib/moons';
 import { SITE_URL, PUBLISHER } from '../../../lib/sites';
 
-export const dynamic = 'force-static';
+// ISR daily: the answer-first block below must never go stale.
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: 'Moon phases 2025–2030 — full moon calendar with dates and names',
@@ -13,8 +14,14 @@ export const metadata: Metadata = {
   alternates: { canonical: '/data/moon-phases-2025-2030' },
 };
 
+const fmtLong = (iso: string) =>
+  new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
 export default function MoonDataPage() {
   const moons = getFullMoons(2025, 2030);
+  const now = new Date();
+  const next = getNextFullMoon(now);
+  const daysUntil = Math.ceil((new Date(next.iso).getTime() - now.getTime()) / 86_400_000);
   const datasetLd = {
     '@context': 'https://schema.org',
     '@type': 'Dataset',
@@ -49,6 +56,19 @@ export default function MoonDataPage() {
       />
       <p className="text-sm font-mono text-orange-500">Open dataset · Astronomy</p>
       <h1 className="text-4xl font-bold tracking-tight mt-2">Moon phases 2025–2030</h1>
+
+      {/* Answer-first: the sentence AI Overviews / featured snippets extract */}
+      <div className="mt-6 p-5 rounded-xl border border-indigo-300/40 dark:border-indigo-500/30 bg-indigo-50/50 dark:bg-indigo-950/30">
+        <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-indigo-500 mb-1">
+          <Moon size={12} /> Quick answer
+        </div>
+        <p className="text-lg">
+          The next full moon is on <strong>{fmtLong(next.iso)}</strong> — the{' '}
+          <strong>{next.name}</strong>
+          {next.supermoon ? ' (a supermoon)' : ''}, {daysUntil === 0 ? 'today' : daysUntil === 1 ? 'tomorrow' : `in ${daysUntil} days`},
+          at {next.iso.slice(11, 16)} UTC.
+        </p>
+      </div>
       <p className="mt-4 text-neutral-600 dark:text-neutral-400">
         Every full moon between January 2025 and December 2030 — {moons.length} events total. UTC
         times are computed from the mean synodic month (29.53059 days) starting from the reference

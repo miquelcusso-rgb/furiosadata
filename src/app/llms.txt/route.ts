@@ -23,9 +23,15 @@ const content = `# furiosadata.com
 - Historical epidemics from 165 CE: https://furiosadata.com/data/historical-epidemics
 - Top scorers in the 5 major European leagues: https://furiosadata.com/data/football-scorers-europe
 
-## Public APIs
+## Public APIs (free, no key, CORS enabled)
+- Documentation: https://furiosadata.com/developers
 - Next full moon: https://furiosadata.com/api/next-full-moon
 - Next eclipse: https://furiosadata.com/api/next-eclipse
+
+## Eclipse pages (one per event, 2025-2035)
+- Index: https://furiosadata.com/data/eclipses-2025-2035
+- Example: https://furiosadata.com/data/eclipses/2026-08-12 (total solar eclipse over Iceland and Spain, August 12 2026)
+- Example: https://furiosadata.com/data/eclipses/2027-08-02 (longest total solar eclipse of the century, August 2 2027)
 
 ## Articles
 - Best free astronomical tools online 2026: https://furiosadata.com/blog/best-free-astronomical-tools-2026
@@ -41,6 +47,8 @@ Follow launches and updates on X: https://x.com/furiosadata
 ## Contact
 - Email: hello@furiosadata.com
 - Contact page: https://furiosadata.com/contact
+- About the studio: https://furiosadata.com/about
+- Blog RSS: https://furiosadata.com/feed.xml
 `;
 
 export function GET() {
